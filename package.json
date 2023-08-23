@@ -1,0 +1,24 @@
+{
+  "name": "image-compressor",
+  "version": "1.0.0",
+  "description": "It can compress images in bulk and store it in supplied path.",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "image-compressor",
+    "compressor",
+    "nodejs"
+  ],
+  "author": "Satyam Sakpal",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "sharp": "^0.32.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
