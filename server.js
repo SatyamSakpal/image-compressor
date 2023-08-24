@@ -7,6 +7,16 @@ const app = express()
 
 app.listen(3000, () => console.log('listening..'))
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname,'src/index.html'))
-})
+app.get('/', (req, res) => {res.sendFile(path.join(__dirname,'src/index.html'))})
+
+
+app.get('image_compress/:dirPath')
+
+ // sharp('./Images/lone-tree.jpg') 
+    //     .png({
+    //         quality: 50,
+    //     })
+    //     .toFile('./Images/output1.png')
+
+
+///
