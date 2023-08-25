@@ -6,6 +6,29 @@
     <title>Document</title>
 </head>
 <body>
-    It works
+    <label for="input-dir">ENTER DIRECTORY</label>
+    <input name="input-dir" type="text" class="input"><br>
+    <button type="submit" class="submit">Submit</button>
+    <script>
+        const btn = document.querySelector('.submit')
+        const input = document.querySelector('.input')
+
+
+        btn.addEventListener('click', () => {
+            console.log(input.value)
+            let obj = {
+                url:input.value,
+            }
+            console.log(obj)
+
+            fetch('image-compress', {
+                method:'POST',
+                headers: {
+                    'Content-Type':'application/json'
+                },
+                body: JSON.stringify(obj)
+            })
+        })
+    </script>
 </body>
 </html>
