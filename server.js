@@ -1,27 +1,25 @@
-const imgCompressorController = require('./controller/imgCompressorController')
-const bodyParser = require('body-parser')
+const downloadable = require('./controller/downloadable')
+const uploadImage = require('./controller/uploadImageController')
+const storage = require('./modules/multerStorage')
 const express = require('express')
+const multer = require('multer')
 
+const upload = multer({ storage })
 const app = express() 
-app.use(bodyParser.json())
+app.use(express.static('./public'))
+
+
+//base route handler
+app.get('/', (req, res) => {res.sendFile('./src/index.html', {root:__dirname})})
  
-app.get('/', (req, res) => {
-    res.sendFile('./src/index.html', {root:__dirname})
-})
+//uploads user selected images to server.
+app.post('/upload-img', upload.array('images',10), uploadImage)
 
-app.post('/image-compress',imgCompressorController)
+//send the files to download the compressed images.
+app.get('/downloadable', downloadable)
 
-app.listen(3000, () => {
-    console.log('listening..')
-})
+
+app.listen(3000, () => {console.log('listening..')})
 
  
  
- // sharp('./Images/lone-tree.jpg') 
-    //     .png({
-    //         quality: 50,
-    //     })
-    //     .toFile('./Images/output1.png')
-
-
-///
