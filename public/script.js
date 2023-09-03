@@ -1,11 +1,19 @@
-const btn = document.querySelector('.submit')
+const inputBtn = document.querySelector('.image-input-btn')
 const input = document.querySelector('.image-input')
-const dBtn = document.querySelector('#download')
-const toggleButton = document.querySelector('.toggle-button')
+const dBtn = document.querySelector('.image-download-btn')
+const toast = document.getElementById("toast");
+const toastDl = document.getElementById("toast-dl");
 let multiple = false
 let fileName
 
-btn.addEventListener('click', async() => {
+inputBtn.addEventListener('click', ()=> {
+    input.click()
+    
+})
+
+
+input.addEventListener('change', async() => {
+    inputBtn.setAttribute('disabled','disabled')
     console.log(input.files)
     let formData = new FormData();
     if(input.files.length === 1) {
@@ -22,13 +30,17 @@ btn.addEventListener('click', async() => {
     }
 
     input.value = ''
+    toast.className = "show";
     try {
         fetch('upload-img', {
             method:'POST',
             body: formData
         })
         .then(() => {
-            dBtn.style.display = "inline"
+            setTimeout(() => {
+                dBtn.style.display = 'block'
+                toast.className = toast.className.replace("show", "hide")
+            },1000)
         })
         
     } catch (err) {
@@ -36,10 +48,11 @@ btn.addEventListener('click', async() => {
     }
 
 })
-
+ 
 
 dBtn.addEventListener('click', async() => {
     try {
+        toastDl.className = 'show'
         const response = await fetch('/downloadable')
     
         if (response.ok) {
@@ -52,6 +65,9 @@ dBtn.addEventListener('click', async() => {
             document.body.appendChild(a)
             a.click()
             URL.revokeObjectURL(url)
+            toastDl.className = toastDl.className.replace("show", "hide")
+            dBtn.style.display = 'none'
+            inputBtn.removeAttribute('disabled')
         } else {
             console.error('Download request failed')
         }

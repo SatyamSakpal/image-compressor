@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Koulen&family=Noto+Sans:wght@100;400;600;700&display=swap');
+
+
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    overflow-y: hidden;
+}
+
+.background {
+    position:absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(90deg, #59D3FC 0%, #554DDE 100%);
+}
+
+.center-menu {
+    
+    size: wrap;
+    flex-shrink: 0;
+    border-radius: 30px;
+    border: 4px solid #FFF6F6;
+    background: rgba(255, 255, 255, 0.43);
+    backdrop-filter: blur(5px);
+}
+
+.center-wrap {
+    padding: 70px 120px;
+}
+
+.heading {
+    color: #FFFBFB;
+    text-align: center;
+    font-family:'Koulen', cursive;
+    font-size: 45px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 87px; /* 135.938% */
+}
+
+.btn-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-input {
+    display: none;
+}
+
+.image-input-btn {
+    color: #FFF;
+    text-align: center;
+    font-family: 'Franklin Gothic Heavy';
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 35px; /* 166.667% */
+    border-radius: 8px;
+    border: 3px solid #568DEC;
+    background: #568DEC;
+    /* box-shadow: 0px 4px 4px 0px rgba(72, 72, 72, 0.25); */
+    width: 184px !important;
+}
+
+.image-input-btn:hover {
+    background: #FFF;
+    color:#568DEC;
+}
+
+.image-download-btn {
+    display: none;
+    position: absolute;
+    color: #FFF;
+    text-align: center;
+    font-family: 'Franklin Gothic Heavy';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 35px; /* 166.667% */
+    border-radius: 8px;
+    outline: 3px solid #56ecc1;
+    border: none;
+    /* border: 2px solid #ffffff; */
+    background: #56ecc1;
+    /* box-shadow: 0px 4px 4px 0px rgba(72, 72, 72, 0.25); */
+    width: 184px !important;
+}
+
+.image-download-btn:hover {
+    background: #FFF;
+    color:#56ecc1;
+}
+
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#toast {
+    font-family: 'Franklin Gothic Heavy';
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: #fff; /* Black background color */
+    color: #568DEC; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 49%; /* Center the snackbar */
+    top: 30px; /* 30px from the bottom */
+}
+  
+  /* Show the snackbar when clicking on a button (class added with JavaScript) */
+#toast.show, #toast-dl.show {
+    visibility: visible; /* Show the snackbar */
+    /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+    However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s forwards;
+    animation: fadein 0.5s forwards;
+}
+  
+
+#toast.hide, #toast-dl.hide{
+    visibility: visible;
+    -webkit-animation: fadeout 0.5s forwards;
+    animation: fadeout 0.5s forwards;
+}
+
+
+@-webkit-keyframes fadein {
+    from {top: 0; opacity: 0;}
+    to {top: 30px; opacity: 1;}
+}
+  
+@keyframes fadein {
+    from {top: 0; opacity: 0;}
+    to {top: 30px; opacity: 1;}
+}
+  
+@-webkit-keyframes fadeout {
+    from {top: 30px; opacity: 1;}
+    to {top: 0; opacity: 0;}
+}
+  
+@keyframes fadeout {
+    from {top: 30px; opacity: 1;}
+    to {top: 0; opacity: 0;}
+}
+
+#toast-dl {
+    font-family: 'Franklin Gothic Heavy';
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: #fff; /* Black background color */
+    color: #56ecc1; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 49%; /* Center the snackbar */
+    top: 30px; /* 30px from the bottom */
+}
